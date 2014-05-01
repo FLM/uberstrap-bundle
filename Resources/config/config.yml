@@ -74,3 +74,10 @@ jms_di_extra:
         all_bundles: false
         bundles: []
         directories: ["%kernel.root_dir%/../src"]
+
+# UsuScryptPasswordEncoderBundle
+usu_scrypt_password_encoder:
+    cpu_cost: 2048
+    memory_cost: 4
+    parallelization_cost: 1
+    key_length: 128
