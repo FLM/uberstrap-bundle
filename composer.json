@@ -1,6 +1,6 @@
 {
-    "name": "flm/uberstrap",
-    "type": "project",
+    "name": "flm/uberstrap-bundle",
+    "type": "symfony-bundle",
     "description": "Uberstrap",
     "require": {
         "symfony/symfony": "~2.4",
@@ -15,6 +15,7 @@
         "incenteev/composer-parameter-handler": "~2.0",
 
         "jms/di-extra-bundle": "@stable",
+        "jms/security-extra-bundle": "@stable",
         "braincrafted/bootstrap-bundle": "@stable",
 
         "ivaynberg/select2": "@stable",
@@ -23,9 +24,15 @@
         "hautelook/alice-bundle": "@stable",
 
         "kriswallsmith/assetic": "@dev",
-        "symfony/assetic-bundle": "@dev"
+        "symfony/assetic-bundle": "@dev",
+        "usu/scrypt-password-encoder-bundle": "@dev",
+        "stof/doctrine-extensions-bundle": "@dev"
     },
     "require-dev": {
         "phpunit/phpunit": "@stable"
-    }
+    },
+    "autoload": {
+        "psr-0": { "FLM\\UberstrapBundle": "" }
+    },
+    "target-dir": "FLM/UberstrapBundle"
 }

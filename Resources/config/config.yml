@@ -1,0 +1,76 @@
+# Parameters
+parameters:
+    assetic.controller.class: FLM\UberstrapBundle\Controller\AsseticController
+    assetic.asset_factory.class: FLM\UberstrapBundle\Assetic\Factory\AssetFactory
+
+# Twig Configuration
+twig:
+    form:
+        resources:
+            - :Form:bootstrap.html.twig
+
+# Assetic Configuration
+assetic:
+    workers:
+        cache_busting: ~
+    filters:
+        cssrewrite: ~
+        cssembed:
+            jar: %kernel.root_dir%/vendor/flm/uberstrap-bundle/FLM/UberstrapBundle/Resources/java/cssembed-0.3.6.jar
+        less:
+            node: /usr/bin/nodejs
+            node_paths: [/usr/lib/node_modules]
+            apply_to: "\.less$"
+    assets:
+        bootstrap_css:
+            inputs:
+                - %kernel.root_dir%/Resources/less/bootstrap.less
+                - %kernel.root_dir%/../vendor/braincrafted/bootstrap-bundle/Braincrafted/Bundle/BootstrapBundle/Resources/less/form.less
+            filters:
+                - less
+                - cssembed
+                - cssrewrite
+            output: css/bootstrap.css
+        bootstrap_js:
+            inputs:
+                - %kernel.root_dir%/../components/bootstrap/js/bootstrap.js
+                - %kernel.root_dir%/../vendor/braincrafted/bootstrap-bundle/Braincrafted/Bundle/BootstrapBundle/Resources/js/bc-bootstrap-collection.js
+            output: js/bootstrap.js
+        jquery:
+            inputs:
+                - %kernel.root_dir%/../components/jquery/jquery.js
+            output: js/jquery.js
+        select2_css:
+            inputs:
+                - %kernel.root_dir%/../components/select2/select2.css
+                - %kernel.root_dir%/../components/select2/select2-bootstrap.css
+            filters:
+                - cssembed
+            output: css/select2.css
+        select2_js:
+            inputs:
+                - %kernel.root_dir%/../components/select2/select2.js
+            output: js/select2.js
+
+# Doctrine Configuration
+doctrine:
+    orm:
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+
+# BraincraftedBootstrapBundle Configuration
+braincrafted_bootstrap:
+     assets_dir: %kernel.root_dir%/../components/bootstrap
+     jquery_path: %kernel.root_dir%/../components/jquery
+     less_filter: less
+     customize:
+         variables_file: %kernel.root_dir%/Resources/less/variables.less
+     auto_configure:
+         assetic: false
+         twig: false
+
+# JMSDiExtraBundle Configuration
+jms_di_extra:
+    locations:
+        all_bundles: false
+        bundles: []
+        directories: ["%kernel.root_dir%/../src"]
