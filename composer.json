@@ -17,20 +17,21 @@
         "jms/di-extra-bundle": "@stable",
         "jms/security-extra-bundle": "@stable",
         "braincrafted/bootstrap-bundle": "@stable",
-
-        "ivaynberg/select2": "@stable",
-        "components/jquery": "1.*",
-        "components/bootstrap-default": "3.*",
         "hautelook/alice-bundle": "@stable",
 
         "kriswallsmith/assetic": "@dev",
         "symfony/assetic-bundle": "@dev",
         "usu/scrypt-password-encoder-bundle": "@dev",
-        "stof/doctrine-extensions-bundle": "@dev"
+        "stof/doctrine-extensions-bundle": "@dev",
+
+        "ivaynberg/select2": "@stable",
+        "components/jquery": "1.*",
+        "components/bootstrap-default": "3.*"
     },
     "require-dev": {
         "phpunit/phpunit": "@stable"
     },
+    "minimum-stability": "stable",
     "autoload": {
         "psr-0": { "FLM\\UberstrapBundle": "" }
     },
