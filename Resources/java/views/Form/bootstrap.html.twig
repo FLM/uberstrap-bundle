@@ -1,0 +1,54 @@
+{% use "BraincraftedBootstrapBundle:Form:bootstrap.html.twig" %}
+
+{% block button_row %}
+{% spaceless %}
+    {% include ':Form:_button_row.html.twig' %}
+{% endspaceless %}
+{% endblock button_row %}
+
+{% block form_label %}
+{% spaceless %}
+    {% include ':Form:_form_label.html.twig' %}
+{% endspaceless %}
+{% endblock form_label %}
+
+{% block form_row %}
+{% spaceless %}
+    {% set style = style|default(bootstrap_get_style()) %}
+    {% set col_size = col_size|default(bootstrap_get_col_size()) %}
+
+    {% if attr.label_col is defined and attr.label_col is not empty %}
+        {% set label_col = attr.label_col %}
+    {% endif %}
+    {% if attr.widget_col is defined and attr.widget_col is not empty %}
+        {% set widget_col = attr.widget_col %}
+    {% endif %}
+    {% if attr.col_size is defined and attr.col_size is not empty %}
+        {% set col_size = attr.col_size %}
+    {% endif %}
+    {% if attr.style is defined and attr.style is not empty %}
+        {% set style = attr.style %}
+    {% endif %}
+
+    {% set label_col = label_col|default(bootstrap_get_label_col()) %}
+    {% set widget_col = widget_col|default(bootstrap_get_widget_col()) %}
+
+    <div class="form-group{% if not form.vars.valid %} has-error{% endif %}">
+        {% if style == 'horizontal' %}
+            {{ form_label(form) }}
+            <div class="col-{{ col_size }}-{{ widget_col }}">
+                {{ block('form_input_group') }}
+                {{ block('form_help') }}
+                {{ form_errors(form) }}
+            </div>
+        {% else %}
+            {{ form_label(form) }}
+            {{ block('form_input_group') }}
+            {{ block('form_help') }}
+            {{ form_errors(form) }}
+        {% endif %}
+    </div>
+
+    {% if style == 'inline' %}&nbsp;{% endif %}
+{% endspaceless %}
+{% endblock form_row %}

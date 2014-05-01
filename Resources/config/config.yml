@@ -7,7 +7,7 @@ parameters:
 twig:
     form:
         resources:
-            - :Form:bootstrap.html.twig
+            - FLMUberstrapBundle:Form:bootstrap.html.twig
 
 # Assetic Configuration
 assetic:

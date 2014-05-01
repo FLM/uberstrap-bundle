@@ -1,0 +1,49 @@
+{% import 'FLMUberstrapBundle::macros.html.twig' as sfs %}
+{% set tmp = app.request.session.start %}
+{% block html %}
+<!DOCTYPE html>
+<html>
+<head>
+    {% block head %}
+        <title>{% block title %}{% endblock %}</title>
+        {% block head_meta %}
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% endblock %}
+        {% block head_css %}
+            {% stylesheets '@bootstrap_css' '@select2_css' %}
+                <link href="{{ asset_url }}" rel="stylesheet" media="screen">
+            {% endstylesheets %}
+        {% endblock %}
+        {% block head_js %}
+            {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
+        {% endblock %}
+    {% endblock %}
+</head>
+{% flush %}
+{{ sleep(1) }}
+<body>
+{% block body %}
+    {% block content %}
+        {% block header %}{% endblock %}
+        {% flush %}
+        {% block main %}{% endblock %}
+        {% flush %}
+        {% block footer %}{% endblock %}
+        {% flush %}
+    {% endblock %}
+    {% block body_js %}
+        {% javascripts '@jquery' '@bootstrap_js' '@select2_js' %}
+            <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+
+        <script>
+            $('input.select2-tags').each(function() {
+                $(this).select2({tags: $(this).data('tags')});
+            });
+            $('select.form-control').select2();
+        </script>
+    {% endblock %}
+{% endblock %}
+</body>
+</html>
+{% endblock %}

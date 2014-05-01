@@ -1,0 +1,33 @@
+{% macro form_bootstrap(form, options) %}
+    {% set style = options.style|default('horizontal') %}
+    {% set col_size = options.col_size|default('lg') %}
+    {% set label_col = options.label_col|default('4 col-md-4 col-sm-4 col-xs-4') %}
+    {% set widget_col = options.widget_col|default('4 col-md-4 col-sm-5 col-xs-8') %}
+    {% set simple_col = options.simple_col|default(null) %}
+    {% set submit_button = options.submit_button|default(false) %}
+    {{ bootstrap_set_style(style) }}
+    {{ bootstrap_set_col_size(col_size) }}
+    {{ bootstrap_set_label_col(label_col) }}
+    {{ bootstrap_set_widget_col(widget_col) }}
+    {{ bootstrap_set_simple_col(simple_col|default(null)) }}
+    {% set class = ((options|default({})).attr|default({})).class|default('') %}
+    {% if style == 'horizontal' %}
+        {% set class = class ~ ' form-horizontal' %}
+    {% elseif style == 'inline' %}
+        {% set class = class ~ ' form-inline' %}
+    {% endif %}
+    {% set options = options|default({})|merge({ attr: { class: class } }) %}
+    {% if submit_button|default(false) %}
+        {{ form_start(form, options|default({})) }}
+            {{ form_widget(form, options|default({})) }}
+
+            <div class="form-group">
+                <div class="{{ ('col-' ~ col_size ~ '-' ~ label_col)|replace({ xs: 'xs-offset', sm: 'sm-offset', md: 'md-offset', lg: 'lg-offset' }) }} {{ ('col-' ~ col_size ~ '-' ~ widget_col) }}">
+                    <input type="submit" class="btn btn-primary {{ submit_class|default('') }}" value="{{ submit_button }}">
+                </div>
+            </div>
+        {{ form_end(form, options|default({})) }}
+    {% else %}
+        {{ form(form, options|default({})) }}
+    {% endif %}
+{% endmacro %}

@@ -1,0 +1,38 @@
+{% set col_size = col_size|default(bootstrap_get_col_size()) %}
+
+{% if attr.label_col is defined and attr.label_col is not empty %}
+    {% set label_col = attr.label_col %}
+{% endif %}
+{% if attr.widget_col is defined and attr.widget_col is not empty %}
+    {% set widget_col = attr.widget_col %}
+{% endif %}
+{% if attr.col_size is defined and attr.col_size is not empty %}
+    {% set col_size = attr.col_size %}
+{% endif %}
+
+{% if label is not sameas(false) %}
+    {% set style = style|default(bootstrap_get_style()) %}
+    {% set label_col = label_col|default(bootstrap_get_label_col()) %}
+
+    {% if attr.style is defined and attr.style is not empty %}
+        {% set style = attr.style %}
+    {% endif %}
+
+    {% set label_attr = label_attr|merge({ 'class': (label_attr.class|default('') ~ ' control-label')|trim }) %}
+    {% if style == 'horizontal' or block_prefixes[1] == 'choice' %}
+        {% set label_attr = label_attr|merge({ 'class': (label_attr.class|default('') ~ ' col-' ~ col_size ~ '-' ~ label_col)|trim }) %}
+    {% elseif style == 'inline' %}
+        {% set label_attr = label_attr|merge({ 'class': (label_attr.class|default('') ~ ' sr-only')|trim }) %}
+    {% endif %}
+
+    {% if not compound %}
+        {% set label_attr = label_attr|merge({'for': id}) %}
+    {% endif %}
+    {% if required %}
+        {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
+    {% endif %}
+    {% if label is empty %}
+        {% set label = name|humanize %}
+    {% endif %}
+    <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>{{ label|trans({}, translation_domain) }}</label>
+{% endif %}
