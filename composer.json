@@ -14,24 +14,23 @@
         "sensio/generator-bundle": "~2.3",
         "incenteev/composer-parameter-handler": "~2.0",
 
-        "jms/di-extra-bundle": "@stable",
-        "jms/security-extra-bundle": "@stable",
-        "braincrafted/bootstrap-bundle": "@stable",
-        "hautelook/alice-bundle": "@stable",
+        "jms/di-extra-bundle": "*",
+        "jms/security-extra-bundle": "*",
+        "braincrafted/bootstrap-bundle": "*",
+        "hautelook/alice-bundle": "*",
 
-        "kriswallsmith/assetic": "@dev",
-        "symfony/assetic-bundle": "@dev",
-        "usu/scrypt-password-encoder-bundle": "@dev",
-        "stof/doctrine-extensions-bundle": "@dev",
+        "kriswallsmith/assetic": "dev-master",
+        "symfony/assetic-bundle": "dev-master",
+        "usu/scrypt-password-encoder-bundle": "dev-master",
+        "stof/doctrine-extensions-bundle": "dev-master",
 
-        "ivaynberg/select2": "@stable",
+        "ivaynberg/select2": "*",
         "components/jquery": "1.*",
         "components/bootstrap-default": "3.*"
     },
     "require-dev": {
         "phpunit/phpunit": "@stable"
     },
-    "minimum-stability": "stable",
     "autoload": {
         "psr-0": { "FLM\\UberstrapBundle": "" }
     },
