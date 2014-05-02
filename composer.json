@@ -7,6 +7,7 @@
         "jms/security-extra-bundle": "*",
         "braincrafted/bootstrap-bundle": "*",
         "hautelook/alice-bundle": "*",
+        "ptachoire/cssembed": "*",
 
         "kriswallsmith/assetic": "dev-master",
         "symfony/assetic-bundle": "dev-master",
