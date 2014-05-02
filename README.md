@@ -23,6 +23,19 @@ Also we need some unstable packages, and Composer won't let us force `@dev` so y
 
 If you already have `kriswallsmith/assetic` or `symfony/assetic-bundle` you need to replace the version with `@dev`.
 
+Also we need to add the `BraincraftedBootstrapBundle` install command:
+
+    "scripts": {
+        "post-install-cmd": [
+            [...]
+            "Braincrafted\\Bundle\\BootstrapBundle\\Composer\\ScriptHandler::install"
+        ],
+        "post-update-cmd": [
+            [...]
+            "Braincrafted\\Bundle\\BootstrapBundle\\Composer\\ScriptHandler::install"
+        ]
+    }
+
 Add to your `AppKernel.php` file:
 
     // Uberstrap
