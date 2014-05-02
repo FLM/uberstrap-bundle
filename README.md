@@ -13,7 +13,7 @@ We're not on Packagist so you have to add this repo manually first:
       }
     ]
 
-Also we need some unstable packages, and Composer won't let us force @dev so you need to allow it explicitly yourself for some packages:
+Also we need some unstable packages, and Composer won't let us force `@dev` so you need to allow it explicitly yourself for some packages:
 
     "flm/uberstrap-bundle": "@dev",
     "kriswallsmith/assetic": "@dev",
@@ -21,7 +21,7 @@ Also we need some unstable packages, and Composer won't let us force @dev so you
     "usu/scrypt-password-encoder-bundle": "@dev",
     "stof/doctrine-extensions-bundle": "@dev"
 
-If you already have "kriswallsmith/assetic" or "symfony/assetic-bundle" you need to replace the version with @dev.
+If you already have `kriswallsmith/assetic` or `symfony/assetic-bundle` you need to replace the version with `@dev`.
 
 Add to your `AppKernel.php` file:
 
@@ -34,12 +34,12 @@ Add to your `AppKernel.php` file:
     new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
     new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
 
-And to the dev/test part:
+And to the `dev` part:
 
     // Uberstrap
     $bundles[] = new Hautelook\AliceBundle\HautelookAliceBundle();
     
-Add to your config.yml:
+Add to your `config.yml`:
 
     imports:
       [...]
