@@ -1,6 +1,20 @@
 FLMUberstrapBundle
 ==================
 
+Contents
+--------
+
+- JMSDiExtraBundle
+- JMSSecurityExtraBundle
+- BraincraftedBootstrapBundle
+- HautelookAliceBundle
+- UsuScryptPasswordEncoderBundle
+- StofDoctrineExtensionsBundle
+- ptachoire/cssembed (phpcssembed filter for Assetic)
+- Select2
+- jQuery 1.*
+- Bootstrap 3.*
+
 Installation
 ------------
 
