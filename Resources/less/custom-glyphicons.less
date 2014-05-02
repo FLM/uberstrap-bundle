@@ -1,0 +1,30 @@
+.glyphicon-alignment(@padding-right; @vertical-align) {
+    padding-right: @padding-right;
+    vertical-align: @vertical-align;
+}
+
+.glyphicon {
+    .glyphicon-alignment(1px, -4px);
+}
+
+.btn > .glyphicon,
+ul.nav > li > a > .glyphicon {
+    .glyphicon-alignment(5px, -1px);
+}
+.btn-lg > .glyphicon {
+    .glyphicon-alignment(6px, 0);
+}
+.btn-sm > .glyphicon {
+    .glyphicon-alignment(4px, 0);
+}
+.btn-xs > .glyphicon {
+    .glyphicon-alignment(2px, -1px);
+}
+
+.label > .glyphicon {
+    .glyphicon-alignment(3px, -1px);
+}
+
+.badge > .glyphicon {
+    .glyphicon-alignment(1px, -1px);
+}
