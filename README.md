@@ -42,7 +42,7 @@ Base configuration is assumed to be the latest stable [Symfony2 Standard](https:
 ```
 - Includes `form_bootstrap` macro for displaying a form with a single line of Twig. Example:
 ```
-{{ form_bootstrap(form, { style: 'horizontal', col_size: 'lg', label_col: '4', widget_col: '5' }) }}
+{{ flm_uberstrap.form_bootstrap(form, { style: 'horizontal', col_size: 'lg', label_col: '4', widget_col: '5' }) }}
 ```
 
 ## TODO
