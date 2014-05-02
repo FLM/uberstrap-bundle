@@ -29,7 +29,7 @@ class TemplateListener
          * Disable streamable templates in dev environment, since life sucks without the debug toolbar.
          * Don't stream subrequests since that breaks template inheritance for some reason.
          */
-        $streamable = ($this->environment !== 'dev' && $event->getRequestType() === Kernel::MASTER_REQUEST);
+        $streamable = ($this->environment !== 'dev' && $this->environment !== 'test' && $event->getRequestType() === Kernel::MASTER_REQUEST);
         if ($request->attributes->has('_template_streamable')) {
             $request->attributes->set('_template_streamable', $streamable);
         }
