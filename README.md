@@ -44,3 +44,7 @@ Add to your `config.yml`:
     imports:
       [...]
       - { resource: @FLMUberstrapBundle/Resources/config/config.yml }
+      
+Run this command:
+
+    app/console braincrafted:bootstrap:generate
