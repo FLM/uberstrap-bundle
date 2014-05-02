@@ -15,8 +15,6 @@ assetic:
         cache_busting: ~
     filters:
         cssrewrite: ~
-        cssembed:
-            jar: %kernel.root_dir%/vendor/flm/uberstrap-bundle/FLM/UberstrapBundle/Resources/java/cssembed-0.3.6.jar
         less:
             node: /usr/bin/nodejs
             node_paths: [/usr/lib/node_modules]
