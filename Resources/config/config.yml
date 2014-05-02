@@ -26,7 +26,6 @@ assetic:
                 - %kernel.root_dir%/../vendor/braincrafted/bootstrap-bundle/Braincrafted/Bundle/BootstrapBundle/Resources/less/form.less
             filters:
                 - less
-                - cssembed
                 - cssrewrite
             output: css/bootstrap.css
         bootstrap_js:
@@ -42,8 +41,6 @@ assetic:
             inputs:
                 - %kernel.root_dir%/../components/select2/select2.css
                 - %kernel.root_dir%/../components/select2/select2-bootstrap.css
-            filters:
-                - cssembed
             output: css/select2.css
         select2_js:
             inputs:
