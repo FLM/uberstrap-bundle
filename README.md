@@ -33,7 +33,7 @@ Base configuration is assumed to be the latest stable [Symfony2 Standard](https:
 
 ### Twig
 
-- Enables streaming of templates with a custom `TemplateListener` (not in `dev` environment, and not for sub-requests, and only when using the `@Template` annotation)
+- Enables streaming of templates with a custom `TemplateListener` (not in `dev` or `test` environments, and not for sub-requests, and only when using the `@Template` annotation)
 - Enables the Bootstrap form theme
 - Includes simple pre-configured HTML5 base template with `flush` after head, header, main, and footer
 - Includes partial template for subrequests which only displays the `main_content` or `main` block. Example:
