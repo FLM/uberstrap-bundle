@@ -64,6 +64,7 @@ braincrafted_bootstrap:
      less_filter: less
      customize:
          variables_file: %kernel.root_dir%/Resources/less/variables.less
+         bootstrap_template: FLMUberstrapBundle:Bootstrap:bootstrap.less.twig
      auto_configure:
          assetic: false
          twig: false
