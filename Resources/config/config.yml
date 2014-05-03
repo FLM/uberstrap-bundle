@@ -11,14 +11,14 @@ twig:
 
 # Assetic Configuration
 assetic:
+    node_paths: [/usr/lib/node_modules]
+    node: /usr/bin/nodejs
     workers:
         cache_busting: ~
     filters:
         cssrewrite: ~
         phpcssembed: ~
         less:
-            node: /usr/bin/nodejs
-            node_paths: [/usr/lib/node_modules]
             apply_to: "\.less$"
     assets:
         bootstrap_css:
