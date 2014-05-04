@@ -10,3 +10,8 @@
         padding-top: (@padding-base-vertical + 1); // Default padding plus a border
     }
 }
+
+// Allowing labels in inline forms (i e for select widgets) requires a bit of padding
+form > .form-inline > .form-group > .control-label {
+    padding-right: 10px;
+}
