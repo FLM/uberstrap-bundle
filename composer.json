@@ -16,7 +16,7 @@
 
         "ivaynberg/select2": "*",
         "components/jquery": "1.*",
-        "components/bootstrap-default": "3.*"
+        "components/bootstrap": "3.*"
     },
     "require-dev": {
         "phpunit/phpunit": "@stable"
