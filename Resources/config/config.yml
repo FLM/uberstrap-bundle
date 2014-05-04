@@ -49,10 +49,10 @@ assetic:
             inputs:
                 - %kernel.root_dir%/../components/select2/select2.js
             output: js/select2.js
-        flmuber_css:
+        flmuber_select2_css:
             inputs:
-                - %kernel.root_dir%/../vendor/flm/uberstrap-bundle/FLM/UberstrapBundle/Resources/less/*.less
-            output: css/flmuber.css
+                - %kernel.root_dir%/../vendor/flm/uberstrap-bundle/FLM/UberstrapBundle/Resources/less/select2/*.less
+            output: css/flmuber_select2.css
             filters:
                 - less
                 - cssrewrite
