@@ -1,14 +1,17 @@
 .glyphicon-alignment(@padding-right; @vertical-align) {
     padding-right: @padding-right;
     vertical-align: @vertical-align;
+    line-height: normal;
 }
 
 .glyphicon {
-    .glyphicon-alignment(1px, -4px);
+    .glyphicon-alignment(1px, -2px);
 }
 
-.btn > .glyphicon,
 ul.nav > li > a > .glyphicon {
+    .glyphicon-alignment(5px, -2px);
+}
+.btn > .glyphicon {
     .glyphicon-alignment(5px, -1px);
 }
 .btn-lg > .glyphicon {
