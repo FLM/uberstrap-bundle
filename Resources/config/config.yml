@@ -87,3 +87,9 @@ usu_scrypt_password_encoder:
     memory_cost: 4
     parallelization_cost: 1
     key_length: 128
+
+# FOSUserBundle Configuration
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: FLM\UberstrapBundle\Entity\User

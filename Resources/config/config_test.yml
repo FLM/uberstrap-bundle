@@ -1,0 +1,7 @@
+security:
+    firewalls:
+        main:
+            form_login:
+                provider: chain_provider
+            http_basic:
+                provider: chain_provider

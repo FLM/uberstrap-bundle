@@ -8,6 +8,7 @@
         "braincrafted/bootstrap-bundle": "*",
         "hautelook/alice-bundle": "*",
         "ptachoire/cssembed": "*",
+        "friendsofsymfony/user-bundle": "*",
 
         "kriswallsmith/assetic": "dev-master",
         "symfony/assetic-bundle": "dev-master",

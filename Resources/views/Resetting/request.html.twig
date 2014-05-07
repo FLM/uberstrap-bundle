@@ -1,0 +1,7 @@
+{% extends 'FOSUserBundle::layout.html.twig' %}
+
+{% block fos_user_title %}{{ 'resetting.request.submit'|trans({}, 'FOSUserBundle') }}{% endblock %}
+
+{% block fos_user_content %}
+    {% include "FOSUserBundle:Resetting:request_content.html.twig" %}
+{% endblock fos_user_content %}
