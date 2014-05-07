@@ -12,6 +12,7 @@
 - [Select2](https://github.com/ivaynberg/select2)
 - [jQuery](https://github.com/components/jquery)
 - [Bootstrap](https://github.com/components/bootstrap)
+- [FOSUserBundle](https://github.com/FriendsOfSymfony/FOSUserBundle)
 
 ## Pre-configured for my needs
 
@@ -44,6 +45,12 @@ Base configuration is assumed to be the latest stable [Symfony2 Standard](https:
 ```
 {{ flm_uberstrap.form_bootstrap(form, { style: 'horizontal', col_size: 'lg', label_col: '4', widget_col: '5' }) }}
 ```
+
+### FOSUserBundle
+
+- Simplest possible User entity
+- Bootstrap adapted login/register views
+- HTTP Authentication and in_memory users for test env
 
 ## TODO
 
@@ -101,6 +108,7 @@ Add to your `AppKernel.php` file:
     new Usu\ScryptPasswordEncoderBundle\UsuScryptPasswordEncoderBundle(),
     new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
     new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
+    new FOS\UserBundle\FOSUserBundle(),
 
 And to the `test` part:
 
@@ -114,7 +122,29 @@ Add to your `config.yml`:
     imports:
       [...]
       - { resource: @FLMUberstrapBundle/Resources/config/config.yml }
-      
+
+### config_test.yml
+
+Add to your `config_test.yml`:
+
+    imports:
+      [...]
+      - { resource: @FLMUberstrapBundle/Resources/config/config_test.yml }
+
+### security.yml
+
+Remove the `security` part of your `security.yml` and add this to the top:
+
+    imports:
+      - { resource: @FLMUberstrapBundle/Resources/config/security.yml }
+
+### routing.yml
+
+Add to your `routing.yml`:
+
+    flm_uberstrap:
+        resource: @FLMUberstrapBundle/Resources/config/routing.yml
+
 ### Enable Bootstrap
 
 Run this command to generate the Bootstrap files in your `app/Resources/less` directory:
