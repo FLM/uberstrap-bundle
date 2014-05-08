@@ -13,6 +13,7 @@
 - [jQuery](https://github.com/components/jquery)
 - [Bootstrap](https://github.com/components/bootstrap)
 - [FOSUserBundle](https://github.com/FriendsOfSymfony/FOSUserBundle)
+- [KnpMenuBundle](https://github.com/KnpLabs/KnpMenuBundle)
 
 ## Pre-configured for my needs
 
@@ -109,6 +110,7 @@ Add to your `AppKernel.php` file:
     new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
     new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
     new FOS\UserBundle\FOSUserBundle(),
+    new Knp\Bundle\MenuBundle\KnpMenuBundle(),
 
 And to the `test` part:
 

@@ -9,6 +9,7 @@
         "hautelook/alice-bundle": "*",
         "ptachoire/cssembed": "*",
         "friendsofsymfony/user-bundle": "*",
+        "knplabs/knp-menu-bundle": "*",
 
         "kriswallsmith/assetic": "dev-master",
         "symfony/assetic-bundle": "dev-master",
