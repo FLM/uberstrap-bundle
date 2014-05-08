@@ -5,3 +5,7 @@ security:
                 provider: chain_provider
             http_basic:
                 provider: chain_provider
+
+doctrine:
+    dbal:
+        path:     '%kernel.root_dir%/cache/%kernel.environment%/db.db3'

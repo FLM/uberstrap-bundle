@@ -53,6 +53,16 @@ Base configuration is assumed to be the latest stable [Symfony2 Standard](https:
 - Bootstrap adapted login/register views
 - HTTP Authentication and in_memory users for test env
 
+### Testing
+
+- Configured to use SQLite in `test` environment (`app/cache/test/db.db3`)
+- Overrides the `Client` class, using transactions that `rollback` after every completed test (the `test` database will be emptied before the test suite is executed)
+- Automatically loads fixtures specified by the `flm_uberstrap.fixtures` parameter (defaults to `app/Resources/fixtures.yml`, can also be an array)
+- If you need a set of fixtures for only one test, send the `fixtures` setting to the `Client`, these will be loaded in addition to the other fixtures (see above):
+```
+$client = static::createClient(array(), array('fixtures' => array('test_fixtures.yml')));
+```
+
 ## TODO
 
 - PuPHPet

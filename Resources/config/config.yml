@@ -2,6 +2,8 @@
 parameters:
     assetic.controller.class: FLM\UberstrapBundle\Controller\AsseticController
     assetic.asset_factory.class: FLM\UberstrapBundle\Assetic\Factory\AssetFactory
+    test.client.class: FLM\UberstrapBundle\Tests\Client
+    flm_uberstrap.fixtures: %kernel.root_dir%/Resources/fixtures.yml
 
 # Twig Configuration
 twig:
