@@ -95,6 +95,9 @@ class Client extends BaseClient
             $tool = new SchemaTool($this->getManager());
             $tool->dropSchema($metadatas);
             $tool->createSchema($metadatas);
+            $manipulator = $this->getContainer()->get('fos_user.util.user_manipulator');
+            $manipulator->create('test', 'test', 'test@example.com', true, false);
+            $manipulator->create('admin', 'admin', 'admin@example.com', true, true);
             $this->loadFixtures($this->loader);
         }
     }
