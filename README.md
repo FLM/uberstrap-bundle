@@ -21,7 +21,7 @@ Base configuration is assumed to be the latest stable [Symfony2 Standard](https:
 
 ### Doctrine
 
-- Use `doctrine.orm.naming_strategy.underscore` naming strategory for better-looking column names (`my_property` instead of `myProperty`)
+- Use `doctrine.orm.naming_strategy.underscore` naming strategy for better-looking column names (`my_property` instead of `myProperty`)
 
 ### Assetic
 
