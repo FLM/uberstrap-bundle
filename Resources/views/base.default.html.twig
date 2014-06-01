@@ -23,7 +23,7 @@
     {% endblock %}
 </head>
 {% flush %}
-<body>
+{% block body_tag %}<body{% block body_tag_extra %}{% endblock %}>{% endblock %}
 {% block body %}
     {% block content %}
         {% block header %}{% endblock %}
