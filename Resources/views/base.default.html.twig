@@ -2,7 +2,7 @@
 {% set tmp = app.request.session.start %}
 {% block html %}
 <!DOCTYPE html>
-<html>
+{% block html_tag %}<html{% block html_tag_extra %}{% endblock %}>{% endblock %}
 <head>
     {% block head %}
         <title>{% block title %}{% endblock %}</title>
