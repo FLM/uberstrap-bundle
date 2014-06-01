@@ -66,7 +66,6 @@ $client = static::createClient(array(), array('fixtures' => array('test_fixtures
 ## TODO
 
 - PuPHPet
-- TestClient with automatic db rollback per test
 - AWS Elastic Beanstalk deploy scripts
 
 ## Installation
