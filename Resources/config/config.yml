@@ -63,6 +63,13 @@ assetic:
 doctrine:
     orm:
         naming_strategy: doctrine.orm.naming_strategy.underscore
+        mappings:
+            anh_taggable: { mapping: false }
+            taggable:
+                type: annotation
+                alias: AnhTaggable
+                prefix: Anh\Taggable\Entity\MappedSuperclass
+                dir: "%kernel.root_dir%/../vendor/anh/doctrine-extensions-taggable/lib/Anh/Taggable/Entity/MappedSuperclass"
 
 # BraincraftedBootstrapBundle Configuration
 braincrafted_bootstrap:

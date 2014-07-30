@@ -14,6 +14,7 @@
 - [Bootstrap](https://github.com/components/bootstrap)
 - [FOSUserBundle](https://github.com/FriendsOfSymfony/FOSUserBundle)
 - [KnpMenuBundle](https://github.com/KnpLabs/KnpMenuBundle)
+- [AnhTaggableBundle](https://github.com/hilobok/AnhTaggableBundle)
 
 ## Pre-configured for my needs
 
@@ -53,6 +54,12 @@ Base configuration is assumed to be the latest stable [Symfony2 Standard](https:
 - Bootstrap adapted login/register views
 - HTTP Authentication and in_memory users for test env
 
+### AnhTaggableBundle
+
+- Integrates [anh/doctrine-extensions-taggable](https://github.com/hilobok/doctrine-extensions-taggable)
+- Easily add tags to any Doctrine entity
+- Form support with autocomplete via `tags` form type
+
 ### Testing
 
 - Configured to use SQLite in `test` environment (`app/cache/test/db.db3`)
@@ -65,8 +72,7 @@ $client = static::createClient(array(), array('fixtures' => array('test_fixtures
 
 ## TODO
 
-- PuPHPet
-- AWS Elastic Beanstalk deploy scripts
+- Turn into distribution instead of bundle
 
 ## Installation
 
@@ -120,6 +126,8 @@ Add to your `AppKernel.php` file:
     new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
     new FOS\UserBundle\FOSUserBundle(),
     new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+    new Sp\BowerBundle\SpBowerBundle(),
+    new Anh\TaggableBundle\AnhTaggableBundle(),
 
 And to the `test` part:
 
@@ -163,3 +171,15 @@ Run this command to generate the Bootstrap files in your `app/Resources/less` di
     app/console braincrafted:bootstrap:generate
 
 The generated `variables.less` file is meant for you to modify, you don't want to look like every other Bootstrap site.
+
+### Install Bower dependencies
+
+Run this command to install Bower dependencies (used by `AnhTaggableBundle`):
+
+    app/console sp:bower:install
+
+### Update database schema
+
+If you're using migrations; create a new migration and migrate, otherwise just run:
+
+    app/console doctrine:schema:update --force
