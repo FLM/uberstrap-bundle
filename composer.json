@@ -15,11 +15,9 @@
         "symfony/assetic-bundle": "dev-master",
         "usu/scrypt-password-encoder-bundle": "dev-master",
         "stof/doctrine-extensions-bundle": "dev-master",
-        "anh/taggable-bundle": "*",
 
         "ivaynberg/select2": "*",
         "components/jquery": "1.*",
-        "components/jqueryui": "1.*",
         "components/bootstrap": "3.*"
     },
     "require-dev": {

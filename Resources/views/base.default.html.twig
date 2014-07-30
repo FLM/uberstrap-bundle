@@ -10,13 +10,13 @@
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {% endblock %}
         {% block head_css %}
-            {% stylesheets '@bootstrap_css' '@select2_css' '@flmuber_select2_css' '@anh_taggable_css' %}
+            {% stylesheets '@bootstrap_css' '@select2_css' '@flmuber_select2_css' %}
                 <link href="{{ asset_url }}" rel="stylesheet" media="screen">
             {% endstylesheets %}
         {% endblock %}
         {% block head_js %}
             {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
-            {% javascripts '@jquery' '@bootstrap_js' '@select2_js' '@anh_taggable_js' %}
+            {% javascripts '@jquery' '@bootstrap_js' '@select2_js' %}
                 <script src="{{ asset_url }}"></script>
             {% endjavascripts %}
         {% endblock %}
@@ -35,6 +35,9 @@
     {% endblock %}
     {% block body_js %}
         <script>
+            $('input.select2-tags').each(function() {
+                $(this).select2({tags: $(this).data('tags')});
+            });
             $('select.form-control').select2();
         </script>
     {% endblock %}
