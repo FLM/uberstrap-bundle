@@ -31,7 +31,7 @@ Base configuration is assumed to be the latest stable [Symfony2 Standard](https:
 - Overrides `AssetFactory` class to fix [kriswallsmith/assetic #532](https://github.com/kriswallsmith/assetic/issues/532).
 - Enables `CacheBustingWorker` which changes the URL of each Assetic resource when one of its source files are modified.
 - Enables `phpcssembed` filter which stores small images as data uri strings in the generated CSS files.
-- Enables `less` filter for files matching `*.less` (Node.js paths are configured for Ubuntu by default)
+- Enables `less` filter for files matching `*.less`
 - Configured assets for Bootstrap, jQuery, and Select2.
 
 ### Twig
@@ -77,6 +77,12 @@ $client = static::createClient(array(), array('fixtures' => array('test_fixtures
 ## Installation
 
 This assumes you have a [Symfony2 Standard](https://github.com/symfony/symfony-standard) project already set up, with `minimum-stability: stable`.
+
+### Prerequisites
+
+- Node.js (Node.js paths are configured for Ubuntu by default)
+- Less (`npm install -g less`)
+- Bower (`npm install -g bower`)
 
 ### composer.json
 
