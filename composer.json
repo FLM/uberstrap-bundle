@@ -10,6 +10,8 @@
         "ptachoire/cssembed": "*",
         "friendsofsymfony/user-bundle": "*",
         "knplabs/knp-menu-bundle": "*",
+        "natxet/CssMin": "*",
+        "mrclay/minify": "*",
 
         "kriswallsmith/assetic": "dev-master",
         "symfony/assetic-bundle": "dev-master",

@@ -14,6 +14,8 @@
 - [Bootstrap](https://github.com/components/bootstrap)
 - [FOSUserBundle](https://github.com/FriendsOfSymfony/FOSUserBundle)
 - [KnpMenuBundle](https://github.com/KnpLabs/KnpMenuBundle)
+- [CssMin](https://code.google.com/p/cssmin/) (via [natxet/CssMin](https://github.com/natxet/CssMin))
+- [minify](https://code.google.com/p/minify/) (via [mrclay/minify](https://github.com/mrclay/minify))
 
 ## Pre-configured for my needs
 
@@ -32,6 +34,8 @@ Base configuration is assumed to be the latest stable [Symfony2 Standard](https:
 - Enables `phpcssembed` filter which stores small images as data uri strings in the generated CSS files.
 - Enables `less` filter for files matching `*.less`
 - Configured assets for Bootstrap, jQuery, and Select2.
+- Enables `cssmin` filter which minifies CSS using the CssMin library
+- Enables `jsmin` filter which minifies JS using the minify library
 
 ### Twig
 

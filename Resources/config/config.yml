@@ -18,6 +18,10 @@ assetic:
     workers:
         cache_busting: ~
     filters:
+        cssmin:
+            apply_to: "\.css$"
+        jsmin:
+            apply_to: "\.js$"
         cssrewrite: ~
         phpcssembed: ~
         less:
