@@ -5,7 +5,7 @@
 {% block html_tag %}<html{% block html_tag_extra %}{% endblock %}>{% endblock %}
 <head>
     {% block head %}
-        <title>{% block title %}{% endblock %}</title>
+        {% block title_container %}<title>{% block title %}{% endblock %}</title>{% endblock %}
         {% block head_meta %}
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {% endblock %}
@@ -23,7 +23,9 @@
     {% endblock %}
 </head>
 {% flush %}
+{% block body_container %}
 {% block body_tag %}<body{% block body_tag_extra %}{% endblock %}>{% endblock %}
+{% block body_top %}{% endblock %}
 {% block body %}
     {% block content %}
         {% block header %}{% endblock %}
@@ -42,6 +44,8 @@
         </script>
     {% endblock %}
 {% endblock %}
+{% block body_bottom %}{% endblock %}
 </body>
+{% endblock %}
 </html>
 {% endblock %}
