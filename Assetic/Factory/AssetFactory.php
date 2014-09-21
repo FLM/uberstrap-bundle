@@ -4,6 +4,7 @@ namespace FLM\UberstrapBundle\Assetic\Factory;
 
 use Assetic\Asset\AssetCollectionInterface;
 use Assetic\Asset\AssetInterface;
+use Assetic\Asset\AssetReference;
 use Assetic\Factory\AssetFactory as BaseAssetFactory;
 use Assetic\Filter\DependencyExtractorInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -90,6 +91,20 @@ class AssetFactory extends BaseAssetFactory
     public function getLastModified(AssetInterface $asset)
     {
         $mtime = 0;
+
+        if ($asset instanceof AssetReference) {
+            $refl = new \ReflectionObject($asset);
+            $amProperty = $refl->getProperty('am');
+            $amProperty->setAccessible(true);
+            $nameProperty = $refl->getProperty('name');
+            $nameProperty->setAccessible(true);
+            $am = $amProperty->getValue($asset);
+            $name = $nameProperty->getValue($asset);
+            $refl->getProperty('am')->setAccessible(false);
+            $refl->getProperty('name')->setAccessible(false);
+            $asset = $am->get($name);
+        }
+
         foreach ($asset instanceof AssetCollectionInterface ? $asset : array($asset) as $leaf) {
             $mtime = max($mtime, $leaf->getLastModified());
 
@@ -107,17 +122,12 @@ class AssetFactory extends BaseAssetFactory
 
                 // extract children from leaf after running all preceeding filters
                 $clone = clone $leaf;
-                /**
-                 * Faulty code commented out
-                 */
-                /*$clone->clearFilters();
+
+                $clone->clearFilters();
                 foreach (array_slice($prevFilters, 0, -1) as $prevFilter) {
                     $clone->ensureFilter($prevFilter);
                 }
-                $clone->load();*/
-                /**
-                 * End of faulty code commented out
-                 */
+                $clone->load();
 
                 foreach ($filter->getChildren($this, $clone->getContent(), $clone->getSourceDirectory()) as $child) {
                     $mtime = max($mtime, $this->getLastModified($child));
