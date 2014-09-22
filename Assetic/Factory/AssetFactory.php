@@ -93,16 +93,17 @@ class AssetFactory extends BaseAssetFactory
         $mtime = 0;
 
         if ($asset instanceof AssetReference) {
-            $refl = new \ReflectionObject($asset);
-            $amProperty = $refl->getProperty('am');
-            $amProperty->setAccessible(true);
-            $nameProperty = $refl->getProperty('name');
-            $nameProperty->setAccessible(true);
-            $am = $amProperty->getValue($asset);
-            $name = $nameProperty->getValue($asset);
-            $refl->getProperty('am')->setAccessible(false);
-            $refl->getProperty('name')->setAccessible(false);
-            $asset = $am->get($name);
+            $refObj = new \ReflectionObject($asset);
+            if ($refObj->hasProperty('name') && $refObj->hasProperty('am')) {
+                $refProp = $refObj->getProperty('name');
+                $refProp->setAccessible(true);
+                $name = $refProp->getValue($asset);
+                $refProp = $refObj->getProperty('am');
+                $refProp->setAccessible(true);
+                $am = $refProp->getValue($asset);
+
+                $asset = $am->get($name);
+            }
         }
 
         foreach ($asset instanceof AssetCollectionInterface ? $asset : array($asset) as $leaf) {
