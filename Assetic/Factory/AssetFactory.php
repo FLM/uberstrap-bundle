@@ -91,22 +91,21 @@ class AssetFactory extends BaseAssetFactory
     public function getLastModified(AssetInterface $asset)
     {
         $mtime = 0;
-
-        if ($asset instanceof AssetReference) {
-            $refObj = new \ReflectionObject($asset);
-            if ($refObj->hasProperty('name') && $refObj->hasProperty('am')) {
-                $refProp = $refObj->getProperty('name');
-                $refProp->setAccessible(true);
-                $name = $refProp->getValue($asset);
-                $refProp = $refObj->getProperty('am');
-                $refProp->setAccessible(true);
-                $am = $refProp->getValue($asset);
-
-                $asset = $am->get($name);
-            }
-        }
-
         foreach ($asset instanceof AssetCollectionInterface ? $asset : array($asset) as $leaf) {
+            if ($leaf instanceof AssetReference) {
+                $refObj = new \ReflectionObject($leaf);
+                if ($refObj->hasProperty('name') && $refObj->hasProperty('am')) {
+                    $refProp = $refObj->getProperty('name');
+                    $refProp->setAccessible(true);
+                    $name = $refProp->getValue($leaf);
+                    $refProp = $refObj->getProperty('am');
+                    $refProp->setAccessible(true);
+                    $am = $refProp->getValue($leaf);
+
+                    $leaf = $am->get($name);
+                }
+            }
+
             $mtime = max($mtime, $leaf->getLastModified());
 
             if (!$filters = $leaf->getFilters()) {
