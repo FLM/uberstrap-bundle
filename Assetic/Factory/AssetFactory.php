@@ -129,8 +129,12 @@ class AssetFactory extends BaseAssetFactory
                 }
                 $clone->load();
 
-                foreach ($filter->getChildren($this, $clone->getContent(), $clone->getSourceDirectory()) as $child) {
-                    $mtime = max($mtime, $this->getLastModified($child));
+                if ($clone instanceof AssetCollectionInterface) {
+                    $mtime = max($mtime, $this->getLastModified($leaf));
+                } else {
+                    foreach ($filter->getChildren($this, $clone->getContent(), $clone->getSourceDirectory()) as $child) {
+                        $mtime = max($mtime, $this->getLastModified($child));
+                    }
                 }
             }
         }

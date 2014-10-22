@@ -1,6 +1,9 @@
 <?php
 namespace FLM\UberstrapBundle\Controller;
 
+use Assetic\Asset\AssetCache;
+use Assetic\Asset\AssetInterface;
+use Assetic\Cache\ArrayCache;
 use Symfony\Bundle\AsseticBundle\Controller\AsseticController as BaseAsseticController;
 
 /**
@@ -19,5 +22,13 @@ class AsseticController extends BaseAsseticController
         $response->setMaxAge(26551332);
 
         return $response;
+    }
+
+    /**
+     * Basically disables caching (default is cache to file system)
+     */
+    protected function cachifyAsset(AssetInterface $asset)
+    {
+        return new AssetCache($asset, new ArrayCache());
     }
 }
