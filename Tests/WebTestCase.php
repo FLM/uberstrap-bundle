@@ -1,7 +1,7 @@
 <?php
 namespace FLM\UberstrapBundle\Tests;
 
-use Liip\FunctionalTestBundle\Test\WebTestCase as BaseWebTest;
+use Liip\FunctionalTestBundle\Test\WebTestCase as BaseWebTestCase;
 
 class WebTestCase extends BaseWebTestCase
 {
