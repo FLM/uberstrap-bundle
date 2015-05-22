@@ -1,6 +1,7 @@
 <?php
 namespace FLM\UberstrapBundle\Tests;
 
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\SchemaTool;
 use Hautelook\AliceBundle\Alice\DataFixtureLoader;
 use Symfony\Bundle\FrameworkBundle\Client as BaseClient;
@@ -38,83 +39,11 @@ class Client extends BaseClient
         parent::setServerParameters($server);
     }
 
-    protected function doRequest($request)
-    {
-        if ($this->requested) {
-            $this->kernel->shutdown();
-            $this->kernel->boot();
-        }
-
-        $this->injectConnection();
-        $this->requested = true;
-
-        return $this->kernel->handle($request);
-    }
-
     /**
-     * @param array $fixtures
-     * @return TestLoader
+     * @return EntityManager
      */
-    protected function createLoader(array $fixtures = null)
-    {
-        return new TestLoader($fixtures);
-    }
-
-    protected function injectConnection()
-    {
-        if (null === self::$connection) {
-            self::$connection = $this->getContainer()->get('doctrine.dbal.default_connection');
-            $this->loader = $this->createLoader($this->fixtures);
-            $this->loader->setContainer($this->getContainer());
-            $this->generateSchema();
-        } else {
-            if (!$this->requested && self::$connection->isTransactionActive()) {
-                self::$connection->rollback();
-            }
-            $this->getContainer()->set('doctrine.dbal.default_connection', self::$connection);
-        }
-
-        if (! $this->requested) {
-            self::$connection->beginTransaction();
-        }
-    }
-
     public function getManager()
     {
         return $this->getContainer()->get('doctrine.orm.entity_manager');
-    }
-
-    /**
-     * @return null
-     */
-    protected function generateSchema()
-    {
-        $metadatas = $this->getMetadatas();
-
-        if (!empty($metadatas)) {
-            $tool = new SchemaTool($this->getManager());
-            $tool->dropSchema($metadatas);
-            $tool->createSchema($metadatas);
-            $manipulator = $this->getContainer()->get('fos_user.util.user_manipulator');
-            $manipulator->create('test', 'test', 'test@example.com', true, false);
-            $manipulator->create('admin', 'admin', 'admin@example.com', true, true);
-            $this->loadFixtures($this->loader);
-        }
-    }
-
-    /**
-     * @param DataFixtureLoader $loader
-     */
-    protected function loadFixtures(DataFixtureLoader $loader)
-    {
-        $loader->load($this->getManager());
-    }
-
-    /**
-     * @return array
-     */
-    protected function getMetadatas()
-    {
-        return $this->getManager()->getMetadataFactory()->getAllMetadata();
     }
 }

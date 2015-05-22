@@ -7,3 +7,6 @@ security:
 doctrine:
     dbal:
         path:     '%kernel.root_dir%/cache/%kernel.environment%/db.db3'
+
+liip_functional_test:
+    cache_sqlite_db: true

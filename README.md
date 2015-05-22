@@ -16,6 +16,7 @@
 - [KnpMenuBundle](https://github.com/KnpLabs/KnpMenuBundle)
 - [CssMin](https://code.google.com/p/cssmin/) (via [natxet/CssMin](https://github.com/natxet/CssMin))
 - [minify](https://code.google.com/p/minify/) (via [mrclay/minify](https://github.com/mrclay/minify))
+- [LiipFunctionalTestBundle](https://github.com/liip/LiipFunctionalTestBundle)
 
 ## Pre-configured for my needs
 
@@ -60,7 +61,7 @@ Base configuration is assumed to be the latest stable [Symfony2 Standard](https:
 ### Testing
 
 - Configured to use SQLite in `test` environment (`app/cache/test/db.db3`)
-- Overrides the `Client` class, using transactions that `rollback` after every completed test (the `test` database will be emptied before the test suite is executed)
+- Uses `LiipFunctionalTestBundle` to effectively roll back the test database after each test
 - Automatically loads fixtures specified by the `flm_uberstrap.fixtures` parameter (defaults to `app/Resources/fixtures.yml`, can also be an array)
 - If you need a set of fixtures for only one test, send the `fixtures` setting to the `Client`, these will be loaded in addition to the other fixtures (see above):
 ```
@@ -133,7 +134,8 @@ And to the `test` part:
 
     // Uberstrap
     $bundles[] = new Hautelook\AliceBundle\HautelookAliceBundle();
-    
+    $bundles[] = new Liip\FunctionalTestBundle\LiipFunctionalTestBundle();
+
 ### config.yml
 
 Add to your `config.yml`:
